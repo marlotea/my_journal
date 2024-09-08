@@ -1,0 +1,46 @@
+<!-- { load static %%} -->
+<!-- to load css from static files -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up</title>
+    </head>
+
+
+    <body>
+
+        <div class="topnav">
+            <a class="active" href="index.html">My Journal</a>
+            <a href="about.html">About</a>
+        </div>
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h2>Register</h2>
+            <input type="text" name="username" placeholder="username" style="border: 1px solid #d3d5d8 !important;"><br>
+            <input type="text" name="email" placeholder="email" style="border: 1px solid #d3d5d8 !important;"><br>
+            <input type="text" name="password" placeholder="password" style="border: 1px solid #d3d5d8 !important;"><br>
+            <input type="text" name="password2" placeholder="confirm password" style="border: 1px solid #d3d5d8 !important;"><br>
+            <!-- name is how we find the field in views -->
+
+            <button type="submit">Sign Up</button>
+        </form>
+        
+        <a href='login.html'><p>I have an account. Sign in.</p></a>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+    </body>
+
+</html>
+

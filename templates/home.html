@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+
+    <!-- yippity yap yap -->
+
+    <!-- Side Bar: Profile -->
+    <div>
+
+        <!-- pic -->
+
+        <figure>
+            <img src="{{user_profile.profile_img.url}}" style="height: 250px; width: 100%;" alt="">
+            <form class="edit-phto">
+                <label class="fileContainer">
+                    <a href="settings">Upload Profile Photo</a>
+                </label>
+            </form>
+        </figure>
+
+        <h4>{{user_profile.user.username}}</h4>
+        <p>
+            {{user_entry_amount}} posts
+            Joined on INSERT JOIN DATE
+        </p>
+
+    </div>
+
+    <!-- Journal Entries -->
+    <div>
+
+        <a href="/edit_entry"><button>Create new entry</button></a>
+
+        <!-- display previous entries -->
+
+        {% if entries %}
+            <ul>
+                {% for entry in entries %}
+                    <li>
+                        <h2>{{ entry.created_on }}</h2>
+                        <p>{{ entry.text|truncatewords:30 }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No journal entries yet.</p>
+        {% endif %}
+
+    </div>
+    
+</body>
+</html>
